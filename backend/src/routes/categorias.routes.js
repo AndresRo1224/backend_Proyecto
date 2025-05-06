@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { methodHTTP as CategoriaController } from "../controllers/categorias.controllers.js";
+import { methodHTTP } from "../controllers/categorias.controllers.js";
+
 const router = Router();
 
-/*Configurar respuesta desde el server metodo http get*/
-router.get("/", CategoriaController.getcategorias);
+// Ruta para obtener todas las camisetas
+router.get("/", methodHTTP.getCamisetas);
 
-/*hacemos disponible al router para toda la aplicacion*/
 export default router;

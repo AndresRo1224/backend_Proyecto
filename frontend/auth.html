@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>FutStyles | Iniciar Sesión o Registrarse</title>
+  <link rel="stylesheet" href="css/auth.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="form-box" id="login-box">
+      <h2><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</h2>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+        <p>¿No tienes una cuenta? <span class="switch" onclick="toggleForm()">Regístrate</span></p>
+      </form>
+    </div>
+
+    <div class="form-box hidden" id="register-box">
+      <h2><i class="fas fa-user-plus"></i> Registrarse</h2>
+      <form id="registerForm">
+        <input type="text" id="registerName" placeholder="Nombre completo" required>
+        <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+        <input type="password" id="registerPassword" placeholder="Contraseña" required>
+        <input type="text" id="adminKey" placeholder="Clave especial (opcional)">
+        <button type="submit">Crear Cuenta</button>
+        <p>¿Ya tienes una cuenta? <span class="switch" onclick="toggleForm()">Inicia sesión</span></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

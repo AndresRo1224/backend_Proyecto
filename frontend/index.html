@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FutStyles | Inicio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://kit.fontawesome.com/a2d2a6a4b9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <img src="assets/logo.png" alt="FutStyles Logo">
+      <h1>FutStyles</h1>
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="productos.html"><i class="fas fa-tshirt"></i> Productos</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+        <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>⚽ Bienvenido a FutStyles</h2>
+    <p>Tu tienda de camisetas de fútbol favoritas. ¡Compra con confianza y estilo!</p>
+  </section>
+
+  <section class="filters">
+    <input type="text" id="filterName" placeholder="🔍 Buscar por nombre...">
+    <input type="number" id="filterPrice" placeholder="💲 Filtrar por precio máximo">
+    <button onclick="filtrarProductos()">Filtrar</button>
+  </section>
+
+  <section class="productos-container" id="productos-container">
+    <!-- Camisetas se insertarán dinámicamente aquí -->
+  </section>
+
+  <footer>
+    <p>© 2025 FutStyles. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/index.js"></script>
+</body>
+</html>
