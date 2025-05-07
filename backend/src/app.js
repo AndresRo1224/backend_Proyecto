@@ -14,11 +14,11 @@ app.set("port", process.env.PORT || 5000);
 
 // Ruta absoluta al directorio del frontend
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "../../frontend")));
 
 // Ruta para servir index.html en la raíz
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend", "index.html"));
+  res.sendFile(path.join(__dirname, "../../frontend", "index.html"));
 });
 
 /*rutas de la API*/
