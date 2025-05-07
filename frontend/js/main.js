@@ -41,8 +41,10 @@ function mostrarCamisetas(lista) {
     const nombre = camiseta.equipo || "Nombre no disponible";
     const descripcion = camiseta.temporada || "Descripción no disponible";
     const precio = camiseta.precio ? `$${camiseta.precio.toLocaleString()}` : "Precio no disponible";
+    const imagen = camiseta.imagen || "assets/default-image.png";
 
     card.innerHTML = `
+      <img src="${imagen}" alt="${nombre}" class="card-img">
       <div class="card-body">
         <h3>${nombre}</h3>
         <p>${descripcion}</p>
