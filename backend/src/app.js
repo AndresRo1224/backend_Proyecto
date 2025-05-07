@@ -7,7 +7,11 @@ import path from "path";
 /*Asignar funcionalidad para mi server web*/
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://proyecto-futstyles2.onrender.com" // Permitir solicitudes solo desde tu frontend
+}));
+
+app.use(express.json()); // Middleware para analizar JSON
 
 /*setear puerto a mi server web*/
 app.set("port", process.env.PORT || 5000);
