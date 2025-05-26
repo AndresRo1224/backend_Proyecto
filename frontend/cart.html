@@ -3,35 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FutStyles | Mi Carrito</title>
+  <title>FutStyles | Carrito</title>
+  <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/carrito.css" />
-  <script src="https://kit.fontawesome.com/3a2f5085c6.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a2d2a6a4b9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
+  <header class="main-header">
     <div class="logo">
-      <img src="../assets/logo.png" alt="FutStyles Logo">
+      <img src="assets/logo.png" alt="FutStyles Logo">
       <h1>FutStyles</h1>
     </div>
-    <nav>
-      <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
-      <a href="productos.html"><i class="fas fa-tshirt"></i> Camisetas</a>
-      <a href="cart.html" class="activo"><i class="fas fa-shopping-cart"></i> Carrito</a>
-      <a href="auth.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+    <nav class="navbar">
+      <ul id="menuNav"></ul>
     </nav>
   </header>
 
-  <main>
-    <section class="contenedor">
-      <h2><i class="fas fa-shopping-cart"></i> Mi Carrito</h2>
-      <div id="carrito-container" class="productos"></div>
-    </section>
-  </main>
+  <section class="carrito-section">
+    <h2><i class="fas fa-shopping-cart"></i> Tu Carrito</h2>
+    <div id="carritoContainer"></div>
+    <div class="carrito-total">
+      <strong>Total:</strong> <span id="totalCarrito">$0</span>
+    </div>
+    <button id="btnConfirmarPedido" class="btn-confirmar"><i class="fas fa-check"></i> Confirmar Pedido</button>
+  </section>
 
   <footer>
     <p>© 2025 FutStyles. Todos los derechos reservados.</p>
   </footer>
 
+  <div id="modalDatosEnvio" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModalDatosEnvio()">&times;</span>
+      <h3>Confirmar Pedido y Datos de Envío</h3>
+      <form id="formDatosEnvio">
+        <div class="form-group">
+          <label for="nombre">Nombre Completo:</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="text" id="telefono" name="telefono" required>
+        </div>
+        <div class="form-group">
+          <label for="barrio">Barrio:</label>
+          <input type="text" id="barrio" name="barrio" required>
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" required>
+        </div>
+        <div class="form-group">
+          <label for="ciudad">Ciudad:</label>
+          <input type="text" id="ciudad" name="ciudad" required>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo Electrónico:</label>
+          <input type="email" id="correo" name="correo" required>
+        </div>
+        <button type="submit" class="btn-confirmar">Enviar Pedido</button>
+      </form>
+    </div>
+  </div>
+
   <script src="js/cart.js"></script>
+  <script src="js/logout.js"></script>
+  <script>
+    // Menú dinámico según el rol
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const menuNav = document.getElementById('menuNav');
+    let menuHtml = `
+      <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+      <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+      <li><a href="consulta.html"><i class="fas fa-search"></i> Consulta</a></li>
+      <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+    `;
+    if (usuario && usuario.role === 'admin') {
+      menuHtml = `
+        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="admin.html"><i class="fas fa-cogs"></i> Gestión</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+        <li><a href="pedidos.html"><i class="fas fa-list"></i> Pedidos</a></li>
+        <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+      `;
+    }
+    menuNav.innerHTML = menuHtml;
+  </script>
 </body>
 </html>

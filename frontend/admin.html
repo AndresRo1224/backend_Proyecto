@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FutStyles | Productos</title>
+  <title>FutStyles | Gestión de Camisetas</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/admin.css" />
   <script src="https://kit.fontawesome.com/a2d2a6a4b9.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -21,42 +22,42 @@
   </header>
 
   <section class="hero">
-    <h2>⚽ Bienvenido a FutStyles</h2>
-    <p>Tu tienda de camisetas de fútbol favoritas. ¡Compra con confianza y estilo!</p>
+    <h2><i class="fas fa-tshirt"></i> Gestión de Camisetas</h2>
+    <p>Administra el inventario de camisetas: agrega, edita, elimina y busca fácilmente.</p>
   </section>
 
   <section class="filters">
     <input type="text" id="filterName" placeholder="🔍 Buscar por nombre...">
     <input type="number" id="filterPrice" placeholder="💲 Filtrar por precio máximo">
-    <button id="btnFiltrar"><i class="fas fa-filter"></i> Filtrar</button>
+    <button id="btnFiltrar">Filtrar</button>
+    <button id="btnAgregar" style="background:#16a34a;color:#fff;"><i class="fas fa-plus"></i> Nueva Camiseta</button>
   </section>
 
   <section class="productos-container" id="contenedorProductos">
     <!-- Camisetas se insertarán dinámicamente aquí -->
-    <!-- Ejemplo de tarjeta de producto:
-    <div class="card">
-      <span class="badge-nuevo">NUEVO</span>
-      <img src="assets/camiseta1.jpg" alt="Camiseta Real Madrid">
-      <div class="card-body">
-        <h3>Real Madrid 24/25</h3>
-        <p>Camiseta local oficial temporada 24/25</p>
-        <div class="precio">€89.99</div>
-        <button><i class="fas fa-cart-plus"></i> Añadir al carrito</button>
-        <button class="btn-detalles"><i class="fas fa-eye"></i> Ver detalles</button>
-      </div>
-    </div>
-    -->
   </section>
 
-  <!-- Modal de detalles mejorado -->
-  <div class="modal" id="modalDetalles">
+  <!-- Modal para agregar/editar camiseta -->
+  <div id="modalCamiseta" class="modal hidden">
     <div class="modal-content">
-      <span class="close" id="cerrarModal">&times;</span>
-      <img id="modalImg" src="assets/camiseta1.jpg" alt="Detalle camiseta">
-      <h3 id="modalTitulo">Nombre del Producto</h3>
-      <p id="modalDescripcion">Descripción del producto aquí.</p>
-      <div class="precio" id="modalPrecio">€00.00</div>
-      <button id="modalAddCart"><i class="fas fa-cart-plus"></i> Añadir al carrito</button>
+      <span class="close" id="closeModal">&times;</span>
+      <h3 id="modalTitle">Agregar Camiseta</h3>
+      <form id="formCamiseta">
+        <input type="hidden" id="camisetaId">
+        <input type="text" id="equipo" placeholder="Equipo" required>
+        <input type="text" id="temporada" placeholder="Temporada" required>
+        <select id="talla" required>
+          <option value="">Talla</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+        <input type="number" id="precio" placeholder="Precio" required>
+        <input type="number" id="stock" placeholder="Stock" required>
+        <input type="text" id="imagen" placeholder="URL Imagen (opcional)">
+        <button type="submit" id="btnGuardar">Guardar</button>
+      </form>
     </div>
   </div>
 
@@ -64,7 +65,7 @@
     <p>© 2025 FutStyles. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
   <script src="js/logout.js"></script>
   <script>
     // Menú dinámico según el rol
@@ -72,15 +73,12 @@
     const menuNav = document.getElementById('menuNav');
     let menuHtml = `
       <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-      <li><a href="productos.html"><i class="fas fa-tshirt"></i> Productos</a></li>
       <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
-      <li><a href="consulta.html"><i class="fas fa-search"></i> Consulta</a></li>
       <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
     `;
     if (usuario && usuario.role === 'admin') {
       menuHtml = `
         <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-        <li><a href="productos.html"><i class="fas fa-tshirt"></i> Productos</a></li>
         <li><a href="admin.html"><i class="fas fa-cogs"></i> Gestión</a></li>
         <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
         <li><a href="pedidos.html"><i class="fas fa-list"></i> Pedidos</a></li>
@@ -88,17 +86,6 @@
       `;
     }
     menuNav.innerHTML = menuHtml;
-
-    // Ejemplo de interacción para el modal (puedes adaptar según tu lógica)
-    const modal = document.getElementById('modalDetalles');
-    const cerrarModal = document.getElementById('cerrarModal');
-    cerrarModal.onclick = () => modal.classList.remove('show');
-    window.onclick = (e) => {
-      if (e.target === modal) modal.classList.remove('show');
-    };
-    // Para abrir el modal desde un botón de detalles, usa:
-    // modal.classList.add('show');
-    // y actualiza los campos del modal con JS según el producto seleccionado.
   </script>
 </body>
 </html>

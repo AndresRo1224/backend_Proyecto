@@ -1,4 +1,3 @@
-// Toggle entre login y registro
 function toggleForm() {
   const loginBox = document.getElementById('login-box');
   const registerBox = document.getElementById('register-box');
@@ -6,7 +5,6 @@ function toggleForm() {
   registerBox.classList.toggle('hidden');
 }
 
-// Evento para LOGIN
 document.getElementById('loginForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
@@ -19,7 +17,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   }
 
   try {
-    const response = await fetch('../backend/auth/login.php', {
+    const response = await fetch('https://backend-proyecto-9mqd.onrender.com/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -29,9 +27,9 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
     if (result.success) {
       alert(`Bienvenido, ${result.user.name}`);
-      // Guardar en sessionStorage/localStorage si deseas
+      localStorage.setItem('usuario', JSON.stringify(result.user)); // <-- Guarda el usuario en localStorage
       if (result.user.role === 'admin') {
-        window.location.href = 'admin/dashboard.html';
+        window.location.href = 'productos.html';
       } else {
         window.location.href = 'index.html';
       }
@@ -44,7 +42,6 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   }
 });
 
-// Evento para REGISTRO
 document.getElementById('registerForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
@@ -58,20 +55,18 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     return;
   }
 
-  const role = adminKey === 'RangelyBryan2025' ? 'admin' : 'user';
-
   try {
-    const response = await fetch('../backend/auth/register.php', {
+    const response = await fetch('https://backend-proyecto-9mqd.onrender.com/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password, role })
+      body: JSON.stringify({ name, email, password, adminKey })
     });
 
     const result = await response.json();
 
     if (result.success) {
       alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión');
-      toggleForm(); // cambia a login
+      toggleForm();
     } else {
       alert(result.message || 'No se pudo crear la cuenta');
     }

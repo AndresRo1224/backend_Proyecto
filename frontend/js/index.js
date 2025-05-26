@@ -1,4 +1,4 @@
-const apiUrl = 'https://proyecto-futstyles2.onrender.com/api/camisetas';
+const apiUrl = 'https://backend-proyecto-9mqd.onrender.com/api/camisetas';
 let camisetas = [];
 
 document.addEventListener('DOMContentLoaded', async () => {

@@ -1,0 +1,78 @@
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 18px;
+  top: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+#formCamiseta input, #formCamiseta select {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+}
+#formCamiseta button {
+  width: 100%;
+  padding: 12px;
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#formCamiseta button:hover {
+  background: #1e293b;
+}
+.card .actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.card .actions button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 7px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.card .actions .edit {
+  background: #facc15;
+  color: #111;
+}
+.card .actions .delete {
+  background: #ef4444;
+  color: #fff;
+}
+.card .actions .edit:hover {
+  background: #eab308;
+}
+.card .actions .delete:hover {
+  background: #dc2626;
+}
+@media (max-width: 600px) {
+  .modal-content { padding: 18px 8px; }
+}

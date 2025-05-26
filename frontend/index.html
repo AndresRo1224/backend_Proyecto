@@ -14,11 +14,8 @@
       <h1>FutStyles</h1>
     </div>
     <nav class="navbar">
-      <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-        <li><a href="productos.html"><i class="fas fa-tshirt"></i> Productos</a></li>
-        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
-        <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+      <ul id="menuNav">
+        <!-- El menú se llenará dinámicamente -->
       </ul>
     </nav>
   </header>
@@ -28,14 +25,34 @@
     <p>Tu tienda de camisetas de fútbol favoritas. ¡Compra con confianza y estilo!</p>
   </section>
 
-  <section class="filters">
-    <input type="text" id="filterName" placeholder="🔍 Buscar por nombre...">
-    <input type="number" id="filterPrice" placeholder="💲 Filtrar por precio máximo">
-    <button onclick="filtrarProductos()">Filtrar</button>
-  </section>
-
-  <section class="productos-container" id="productos-container">
-    <!-- Camisetas se insertarán dinámicamente aquí -->
+  <!-- Sección de noticias de fútbol -->
+  <section class="noticias">
+    <h2>📰 Noticias de Fútbol - Temporada 24/25</h2>
+    <article>
+      <h3>LaLiga: El Real Madrid ficha a Kylian Mbappé</h3>
+      <p>El club blanco ha anunciado oficialmente la llegada del delantero francés, quien debutará en agosto.</p>
+      <span>25 de mayo de 2025</span>
+    </article>
+    <article>
+      <h3>Premier League: Manchester City arranca la temporada con victoria</h3>
+      <p>El equipo de Pep Guardiola venció 3-1 al Arsenal en el partido inaugural de la liga inglesa.</p>
+      <span>24 de mayo de 2025</span>
+    </article>
+    <article>
+      <h3>Serie A: Inter de Milán presenta su nueva equipación</h3>
+      <p>El Inter sorprende con un diseño innovador para la temporada 24/25 y anuncia refuerzos en defensa.</p>
+      <span>23 de mayo de 2025</span>
+    </article>
+    <article>
+      <h3>Bundesliga: Harry Kane sigue imparable en el Bayern</h3>
+      <p>El delantero inglés suma 2 goles en la victoria del Bayern sobre el Dortmund.</p>
+      <span>22 de mayo de 2025</span>
+    </article>
+    <article>
+      <h3>Ligue 1: PSG apuesta por jóvenes talentos</h3>
+      <p>El Paris Saint-Germain inicia la temporada con una plantilla renovada y varias promesas francesas.</p>
+      <span>21 de mayo de 2025</span>
+    </article>
   </section>
 
   <footer>
@@ -43,5 +60,29 @@
   </footer>
 
   <script src="js/index.js"></script>
+  <script src="js/logout.js"></script>
+  <script>
+    // Menú dinámico según el rol
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const menuNav = document.getElementById('menuNav');
+    let menuHtml = `
+      <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+      <li><a href="productos.html"><i class="fas fa-tshirt"></i> Productos</a></li>
+      <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+      <li><a href="consulta.html"><i class="fas fa-search"></i> Consulta</a></li>
+      <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+    `;
+    if (usuario && usuario.role === 'admin') {
+      menuHtml = `
+        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="productos.html"><i class="fas fa-tshirt"></i> Productos</a></li>
+        <li><a href="admin.html"><i class="fas fa-cogs"></i> Gestión</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+        <li><a href="pedidos.html"><i class="fas fa-list"></i> Pedidos</a></li>
+        <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+      `;
+    }
+    menuNav.innerHTML = menuHtml;
+  </script>
 </body>
 </html>
