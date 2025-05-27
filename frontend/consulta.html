@@ -7,12 +7,23 @@
   <link rel="stylesheet" href="css/consulta.css" />
 </head>
 <body>
-  <h1>Consulta tu Pedido</h1>
-  <input type="email" id="correoInput" placeholder="Ingresa tu correo" />
-  <button onclick="buscarPedido()">Buscar</button>
-
-  <div id="resultadoPedidos"></div>
-
+   <header class="main-header">
+    <div class="logo">
+      <img src="assets/LOGO.png" alt="FutStyles Logo">
+      <h1><a href="index.html" style="text-decoration: none; color: inherit;">FutStyles</a></h1>
+    </div>
+    <nav class="navbar">
+      <ul id="menuNav">
+        <!-- El menú se llenará dinámicamente -->
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Consulta tu Pedido</h1>
+    <input type="email" id="correoInput" placeholder="Ingresa tu correo" />
+    <button onclick="buscarPedido()">Buscar</button>
+    <div id="resultadoPedidos"></div>
+  </main>
   <script src="js/consulta.js"></script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+/* Estilo para el botón de recargar noticias */
+#btnRecargarNoticias {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#btnRecargarNoticias:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+#btnRecargarNoticias:active {
+  background-color: #003f7f;
+  transform: scale(0.95);
+}

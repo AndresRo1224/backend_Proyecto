@@ -8,8 +8,64 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+}
+
+/* General header styling */
+.main-header {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos en columna */
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  padding: 20px;
+  background-color: #1a1a1a; /* Fondo oscuro */
+  color: #fff;
+  width: 100%;
+}
+
+/* Logo container */
+.logo-container {
+  display: flex;
+  flex-direction: column; /* Alinea el logo y el título en columna */
+  align-items: center; /* Centra horizontalmente */
+  text-align: center;
+}
+
+.logo-link {
+  display: flex;
+  flex-direction: column; /* Alinea el logo y el título en columna */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-img {
+  height: 60px; /* Ajusta el tamaño del logo */
+  margin-bottom: 10px; /* Espacio entre el logo y el título */
+}
+
+.logo-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Navbar styling */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #f0a500; /* Color de hover */
 }
 
 /* Título principal */
